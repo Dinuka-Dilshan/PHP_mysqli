@@ -1,6 +1,7 @@
 <?php
     $connection = mysqli_connect('localhost','Dinuka','abcd1234','ShineWay');
-
+    $users;
+    $count = 1;
     if(!$connection){
         echo mysqli_connect_error();
     }else{
@@ -14,11 +15,6 @@
 
         //convert result object to an associative array(so we can access with the field name)
         $users = mysqli_fetch_all($result,MYSQLI_ASSOC);
-        
-        foreach($users as $user){
-            echo "<p>".$user['password']."</p>";
-        }
-
     }
 ?>
 
@@ -36,8 +32,8 @@
 <body>
     
 
-
-<table class="table">
+<div class="container-md pt-lg-5">
+<table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -49,18 +45,28 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
-    
+       
+   
+      
+    <?php foreach($users as $user):?>
+        <tr>    
+            <th scope="row"><?php echo $count?></th>
+            <td><?php echo $user['name']?></td>
+            <td><?php echo $user['username']?></td>
+            <td><?php echo $user['email']?></td>
+            <td><?php echo $user['Telephone']?></td>
+            <td><?php echo $user['NIC']?></td>
+        </tr>
+    <?php $count++;?>
+    <?php endforeach?>
+
+   
+
+
+
   </tbody>
 </table>
-
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 </body>
