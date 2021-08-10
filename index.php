@@ -15,6 +15,12 @@
 
         //convert result object to an associative array(so we can access with the field name)
         $users = mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+        //release the memory for result after saving it to an array
+        mysqli_free_result($result);
+
+        //close connection
+        mysqli_close($connection);
     }
 ?>
 
