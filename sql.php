@@ -8,7 +8,7 @@
     if( $GLOBALS['connection']){
       return mysqli_query( $GLOBALS['connection'],$query);
     }else{
-      return 0;
+      return false;
     }
   }
 
